@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
                     ){
                         Text(text = "TOP NEWS",
                             modifier = Modifier.align(Alignment.CenterHorizontally),
-                            color = Color.White,
+                            color = Color.Blue,
                             fontSize = 24.sp,
                             fontFamily = FontFamily.SansSerif
                             )
