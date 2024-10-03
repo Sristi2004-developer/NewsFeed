@@ -41,7 +41,7 @@ fun HomeScreen (newsViewModel: NewsViewModel) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
-        SearchBar(text = searchText.value, onSearch = { searchText.value = it })
+        SearchBar(text = searchText.value, onSearch = { searchText.value = it }, viewModel = newsViewModel)
         Spacer(modifier = Modifier.padding(10.dp))
 
 
@@ -90,10 +90,11 @@ fun NewsItem(article: Article) {
         }
 }
 @Composable
-fun SearchBar(text: String, onSearch: (String) -> Unit){
+fun SearchBar(text: String, onSearch: (String) -> Unit,viewModel: NewsViewModel){
     Box(modifier = Modifier.fillMaxWidth()){
         OutlinedTextField(value = text,
-            onValueChange = onSearch,
+            onValueChange = {onSearch(it)
+                    viewModel.searchQuery(it)},
             label = { Text(text = "Search")},
             shape = RoundedCornerShape(20.dp),
             modifier = Modifier.fillMaxWidth()
