@@ -60,6 +60,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.room.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -69,4 +70,10 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation (libs.news.api.java)
     implementation(libs.coil.compose)
+    implementation(libs.androidx.navigation.compose.v281)
+    implementation(libs.androidx.hilt.navigation.compose.v100)
+    implementation(libs.compose.constraint)
+    implementation(libs.androidx.constraintlayout.compose)
+    implementation(libs.gson)
+
 }

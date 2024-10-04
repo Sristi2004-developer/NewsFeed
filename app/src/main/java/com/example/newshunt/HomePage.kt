@@ -1,9 +1,9 @@
 package com.example.newshunt
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,13 +25,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
+import com.example.newshunt.utils.Route
 import com.example.newshunt.viewmodel.NewsViewModel
 import com.kwabenaberko.newsapilib.models.Article
 
+
 @Composable
-fun HomeScreen (newsViewModel: NewsViewModel) {
+fun HomeScreen (newsViewModel: NewsViewModel,navController: NavHostController) {
 
     val articles by newsViewModel.articles.observeAsState(emptyList())
     val searchText = remember {
@@ -49,7 +51,10 @@ fun HomeScreen (newsViewModel: NewsViewModel) {
             modifier = Modifier.fillMaxSize()
         ) {
             items(articles) { article ->
-                NewsItem(article)
+                NewsItem(article, onClick = {
+                    navController.navigate(Route.navRoute(article))
+                })
+
 
             }
 
@@ -60,10 +65,12 @@ fun HomeScreen (newsViewModel: NewsViewModel) {
 
 
 @Composable
-fun NewsItem(article: Article) {
+fun NewsItem(article: Article, onClick: () -> Unit = {}) {
     Card(
-        modifier = Modifier.padding(10.dp),
+        modifier = Modifier.padding(10.dp)
+        .clickable { onClick() },
         elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
+
         ){
             Column(
                 modifier = Modifier
@@ -81,9 +88,9 @@ fun NewsItem(article: Article) {
                     fontWeight = FontWeight.Bold,
                     maxLines = 3
                     )
-                Text(text = article.source.name,
-                    maxLines = 1,
-                    fontSize = 14.sp)
+//                Text(text = article.source,
+//                    maxLines = 1,
+//                    fontSize = 14.sp)
 
             }
 

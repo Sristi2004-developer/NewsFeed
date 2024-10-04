@@ -1,6 +1,10 @@
 [versions]
 agp = "8.5.0"
 coilCompose = "2.4.0"
+constraintlayoutCompose = "1.0.1"
+gson = "2.10.1"
+hiltNavigationCompose = "1.2.0"
+hiltNavigationComposeVersion = "1.0.0"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -9,12 +13,21 @@ espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.6"
 activityCompose = "1.9.2"
 composeBom = "2024.04.01"
+navigationCompose = "2.8.1"
 newsApiJava = "1.0.2"
 runtimeLivedata = "1.7.2"
+compose-navigation = "2.8.2"
+compose-constraint = "2.1.4"
+roomKtx = "2.6.1"
 
 [libraries]
+androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayoutCompose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+androidx-hilt-navigation-compose-v100 = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationComposeVersion" }
+androidx-navigation-compose-v281 = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -30,6 +43,12 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 news-api-java = { module = "com.github.KwabenBerko:News-API-Java", version.ref = "newsApiJava" }
 androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
+
+compose-navigation = {module = "androidx.navigation:navigation-compose",version.ref = "compose-navigation"}
+compose-constraint = {module = "androidx.constraintlayout:constraintlayout",version.ref = "compose-constraint"}
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
+
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
