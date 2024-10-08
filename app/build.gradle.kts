@@ -76,4 +76,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout.compose)
     implementation(libs.gson)
 
+    implementation(libs.accompanist.webview.v0312alpha)
+
+
 }

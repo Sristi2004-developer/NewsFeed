@@ -1,4 +1,6 @@
 [versions]
+#accompanistWebview = "0.28.0"
+accompanistWebviewVersion = "0.31.2-alpha"
 agp = "8.5.0"
 coilCompose = "2.4.0"
 constraintlayoutCompose = "1.0.1"
@@ -21,6 +23,8 @@ compose-constraint = "2.1.4"
 roomKtx = "2.6.1"
 
 [libraries]
+
+accompanist-webview-v0312alpha = { module = "com.google.accompanist:accompanist-webview", version.ref = "accompanistWebviewVersion" }
 androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayoutCompose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
@@ -47,6 +51,7 @@ androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtim
 compose-navigation = {module = "androidx.navigation:navigation-compose",version.ref = "compose-navigation"}
 compose-constraint = {module = "androidx.constraintlayout:constraintlayout",version.ref = "compose-constraint"}
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
+
 
 
 

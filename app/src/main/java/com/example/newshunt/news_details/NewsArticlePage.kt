@@ -17,13 +17,18 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import  androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
+import com.google.accompanist.web.WebView
+//import com.google.accompanist.web.WebView
+
 import com.kwabenaberko.newsapilib.models.Article
+
 
 
 @Composable
@@ -35,8 +40,8 @@ fun NewsArticleScreen(navController: NavController,article: Article){
 
 }
 @Composable
-fun NewsDetails(article: Article){
-    Box(modifier = Modifier.fillMaxSize()){
+fun NewsDetails(article: Article) {
+    Box(modifier = Modifier.fillMaxSize()) {
 //        AsyncImage(model = article.image,
 //            contentDescription = null,
 //           modifier = Modifier
@@ -44,20 +49,24 @@ fun NewsDetails(article: Article){
 //               .height(350.dp),
 //            contentScale = ContentScale.Fit
 //        )
-        ConstraintLayout(modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())) {
+        ConstraintLayout(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+        ) {
 
             val (imageRef, topSpace, details, newContent) = createRefs()
-
-            AsyncImage(model = article.urlToImage, contentDescription = null,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(300.dp)
-                    .constrainAs(imageRef) {
-                        top.linkTo(parent.top)
-                    },
-                contentScale = ContentScale.Fit)
+//
+//            AsyncImage(
+//                model = article.urlToImage, contentDescription = null,
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .height(300.dp)
+//                    .constrainAs(imageRef) {
+//                        top.linkTo(parent.top)
+//                    },
+//                contentScale = ContentScale.Fit
+//            )
 
             Spacer(modifier = Modifier
                 .height(30.dp)
@@ -66,32 +75,68 @@ fun NewsDetails(article: Article){
                 })
 
 
-            Box(modifier = Modifier
-                .constrainAs(newContent) {
-                    top.linkTo(topSpace.bottom)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                    bottom.linkTo(parent.bottom)
-                    height = Dimension.wrapContent
-                }
-                .padding(14.dp)
-                .background(Color.White)
-            ) {
-                Text(
-                    text = article.description,
-                    fontSize = 14.sp,
-                    modifier = Modifier.fillMaxSize()
+//            Box(modifier = Modifier
+//                .constrainAs(newContent) {
+//                    top.linkTo(topSpace.bottom)
+//                    start.linkTo(parent.start)
+//                    end.linkTo(parent.end)
+//                    bottom.linkTo(parent.bottom)
+//                    height = Dimension.fillToConstraints
+//                }
+//                .padding(14.dp)
+//                .background(Color.White)
+//            ) {
+//                Text(
+//                    text = article.description,
+//                    fontSize = 14.sp,
+//                    modifier = Modifier.fillMaxSize(),
+//                    maxLines = 10
+//
+//                )
+//                ConstraintLayout(modifier = Modifier.fillMaxSize()){
+//                    val (webViewRef) = createRefs()
+//
+//               Webview(
+//                    url = article.url,
+//                   modifier = Modifier.fillMaxSize()
+//                       .constrainAs(webViewRef){}
+//
+//
+//                )
+//            }
+                WebView(
+                    url = article.url,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .constrainAs(newContent) {
+                            top.linkTo(topSpace.bottom)
+                            start.linkTo(parent.start)
+                            end.linkTo(parent.end)
+                            bottom.linkTo(parent.bottom)
+                            height = Dimension.fillToConstraints
+                        }
                 )
+
+
             }
 
 
         }
 
-
-
-
-
-
     }
 
-}
+
+    @Composable
+    fun WebView(url: String, modifier: Modifier = Modifier) {
+        AndroidView(
+            factory = { context ->
+                android.webkit.WebView(context).apply {
+                    settings.javaScriptEnabled = true
+
+                    loadUrl(url)
+                }
+            },
+            modifier = modifier
+        )
+    }
+
