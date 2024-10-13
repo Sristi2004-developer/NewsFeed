@@ -39,6 +39,7 @@ init{
          })
 
 
+
     }
     fun searchQuery(query : String){
         val newsApiClient = NewsApiClient(Constants.API_KEY)
@@ -57,7 +58,6 @@ init{
             }
 
         })
-
 
     }
 

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    kotlin("plugin.serialization") version "2.0.21"
 }
 
 android {
@@ -61,6 +62,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.transportation.consumer)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -70,13 +72,22 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation (libs.news.api.java)
     implementation(libs.coil.compose)
-    implementation(libs.androidx.navigation.compose.v281)
-    implementation(libs.androidx.hilt.navigation.compose.v100)
+//    implementation(libs.androidx.navigation.compose.v281)
+//    implementation(libs.androidx.hilt.navigation.compose.v100)
     implementation(libs.compose.constraint)
     implementation(libs.androidx.constraintlayout.compose)
     implementation(libs.gson)
 
     implementation(libs.accompanist.webview.v0312alpha)
+
+//    val nav_version = "2.8.2"
+
+    // Jetpack Compose integration
+    implementation(libs.compose.navigation)
+
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+
 
 
 }

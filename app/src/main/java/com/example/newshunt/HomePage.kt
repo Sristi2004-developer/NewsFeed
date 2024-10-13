@@ -27,13 +27,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
-import com.example.newshunt.utils.Route
+import com.example.newshunt.utils.NewsArticleScreen
+//import com.example.newshunt.utils.Route
 import com.example.newshunt.viewmodel.NewsViewModel
 import com.kwabenaberko.newsapilib.models.Article
 
 
 @Composable
-fun HomeScreen (newsViewModel: NewsViewModel,navController: NavHostController) {
+fun HomeScreen (newsViewModel: NewsViewModel, navController: NavHostController) {
 
     val articles by newsViewModel.articles.observeAsState(emptyList())
     val searchText = remember {
@@ -52,7 +53,8 @@ fun HomeScreen (newsViewModel: NewsViewModel,navController: NavHostController) {
         ) {
             items(articles) { article ->
                 NewsItem(article, onClick = {
-                    navController.navigate(Route.navRoute(article))
+                    navController.navigate(NewsArticleScreen(article.url))
+//                    navController.navigate(Route.navRoute(article))
                 })
 
 
